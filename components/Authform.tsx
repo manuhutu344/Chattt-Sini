@@ -4,6 +4,7 @@ import React from 'react'
 import {useState, useCallback} from 'react'
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
 import Input from './Input/Input'
+import Button from './Input/Button'
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -55,6 +56,9 @@ function Authform() {
           )}
           <Input id="email" label='Masukan Email Anda' type='email' errors={errors} register={register}/>
           <Input id="password" label='Masukan password anda' type='password' errors={errors} register={register}/>
+          <div>
+            <Button>Pencet Untuk Login</Button>
+          </div>
         </form>
       </div>
     </div>
