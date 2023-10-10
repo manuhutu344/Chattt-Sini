@@ -5,6 +5,8 @@ import {useState, useCallback} from 'react'
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
 import Input from './Input/Input'
 import Button from './Input/Button'
+import AuthSocialButton from './Input/AuthSocialButton'
+import {BsGithub, BsGoogle} from 'react-icons/bs'
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -70,6 +72,15 @@ function Authform() {
                 Atau Masuk Dengan
               </span>
             </div>
+          </div>
+          <div className='mt-6 flex gap-2'>
+            <AuthSocialButton icon={BsGithub} onClick={()=>socialAction('github')} />
+            <AuthSocialButton icon={BsGoogle} onClick={()=>socialAction('google')} />
+          </div>
+        </div>
+        <div className='flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500'>
+          <div>
+            {variant === 'LOGIN' ? 'Chat Baru?' : 'Sudah Punya Akun?'}
           </div>
         </div>
       </div>
