@@ -54,10 +54,10 @@ function Authform() {
       <div className='bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
         <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
           {variant === 'REGISTER' && (
-            <Input id="name" label='Nama' errors={errors} register={register}/>
+            <Input id="name" label='Nama' errors={errors} register={register} disabled={isLoading} />
           )}
-          <Input id="email" label='Masukan Email Anda' type='email' errors={errors} register={register}/>
-          <Input id="password" label='Masukan password anda' type='password' errors={errors} register={register}/>
+          <Input id="email" label='Masukan Email Anda' type='email' errors={errors} register={register} disabled={isLoading} />
+          <Input id="password" label='Masukan password anda' type='password' errors={errors} register={register} disabled={isLoading} />
           <div>
             <Button disabled={isLoading} fullwidth type='submit'>{variant === 'LOGIN' ? 'Sign in' : 'Register'}</Button>
           </div>
