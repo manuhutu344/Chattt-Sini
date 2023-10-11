@@ -82,6 +82,9 @@ function Authform() {
           <div>
             {variant === 'LOGIN' ? 'Chat Baru?' : 'Sudah Punya Akun?'}
           </div>
+          <div onClick={toggleVariant} className='underline cursor-pointer'>
+            {variant === 'LOGIN' ? 'Buat Akun Anda': 'Langsung Login'}
+          </div>
         </div>
       </div>
     </div>
