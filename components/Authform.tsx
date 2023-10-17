@@ -8,6 +8,8 @@ import Button from './Input/Button'
 import AuthSocialButton from './Input/AuthSocialButton'
 import {BsGithub, BsGoogle} from 'react-icons/bs'
 import axios from 'axios'
+import toast from 'react-hot-toast'
+import { signIn } from 'next-auth/react'
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -40,9 +42,23 @@ function Authform() {
       setIsloading(true)
       if(variant === 'REGISTER'){
         axios.post('/api/register', data)
+        .catch(()=> toast.error('Ada Sesuatu Yang Salah'))
+        .finally(() => setIsloading(false))
       }
       if(variant === 'LOGIN'){
-
+        signIn('credentials', {
+          ...data,
+          redirect: false
+        })
+        .then((e)=>{
+          if(e?.error){
+            toast.error('Terjadi Kesalahan')
+          }
+          if(e?.ok && !e?.error){
+            toast.success('Sukses login')
+          }
+        })
+        .finally(()=> setIsloading(false))
       }
     }
 
