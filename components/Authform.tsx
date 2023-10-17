@@ -64,6 +64,18 @@ function Authform() {
 
     function socialAction(action: string){
       setIsloading(true)
+      signIn(action, {
+        redirect: false
+      })
+      .then((e)=>{
+        if(e?.error){
+          toast.error('Terjadi Kesalahan')
+        }
+        if(e?.ok && !e?.error){
+          toast.success('Berhasil Login')
+        }
+      })
+      .finally(()=>setIsloading(false))
     }
 
   return (
