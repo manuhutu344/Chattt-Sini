@@ -50,6 +50,7 @@ function Authform() {
       setIsloading(true)
       if(variant === 'REGISTER'){
         axios.post('/api/register', data)
+        .then(()=>signIn('credentials', data))
         .catch(()=> toast.error('Ada Sesuatu Yang Salah'))
         .finally(() => setIsloading(false))
       }
@@ -64,6 +65,7 @@ function Authform() {
           }
           if(e?.ok && !e?.error){
             toast.success('Sukses login')
+            router.push('/users')
           }
         })
         .finally(()=> setIsloading(false))
