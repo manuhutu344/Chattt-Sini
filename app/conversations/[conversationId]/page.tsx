@@ -1,6 +1,8 @@
 import getConversationById from '@/app/actions/getConversationById'
 import getMessages from '@/app/actions/getMessages'
+import Body from '@/components/Body'
 import EmptyState from '@/components/EmptyState'
+import Form from '@/components/Form'
 import Header from '@/components/Header'
 import React from 'react'
 
@@ -24,6 +26,8 @@ async function page({params}:{params : Props}) {
     <div className='lg:pl-80 h-full'>
       <div className='h-full flex flex-col'>
         <Header conversation={conversation} />
+        <Body />
+        <Form />
       </div>
     </div>
   )
