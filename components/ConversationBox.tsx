@@ -42,7 +42,7 @@ function ConversationBox({data, selected}:Props) {
     },[userEmail, lastMessages])
     const lastMessageText = useMemo(()=>{
         if(lastMessages?.image){
-            return 'Gambar Terkirim'
+            return 'Anda Mengirim Gambar'
         }
         if(lastMessages?.body){
             return lastMessages.body
