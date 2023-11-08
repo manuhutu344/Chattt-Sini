@@ -46,6 +46,11 @@ function MessageBox({data, isLast}:Props) {
                     <div>{data.body}</div>
                 )}
             </div>
+            {isLast && isOwn && seenList.length > 0 &&(
+                <div className='text-xs font-light text-gray-500'>
+                    {`Dikirm Oleh ${seenList}`}
+                </div>
+            )}
         </div>
     </div>
   )
