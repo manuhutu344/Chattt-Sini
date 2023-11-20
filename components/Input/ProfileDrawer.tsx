@@ -7,6 +7,7 @@ import {format} from 'date-fns'
 import { Transition, Dialog } from '@headlessui/react'
 import {IoClose, IoTrash} from 'react-icons/io5'
 import Avatar from '../Avatar'
+import Modal from '../Modal'
 
 interface Props{
     isOpen: boolean
@@ -31,6 +32,8 @@ function ProfileDrawer({isOpen, onClose, data}:Props) {
         return 'Aktif'
     }, [data])
   return (
+    <>
+    <Modal isOpen onClose={()=>{}} />
     <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as="div" className='relative z-50' onClose={onClose}>
             <Transition.Child as={Fragment} enter="ease-out duration-500" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-500" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -112,6 +115,7 @@ function ProfileDrawer({isOpen, onClose, data}:Props) {
             </div>
         </Dialog>
     </Transition.Root>
+    </>
   )
 }
 
