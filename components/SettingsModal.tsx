@@ -3,7 +3,10 @@
 import { User } from '@prisma/client'
 import React, { useState } from 'react'
 import {useRouter} from 'next/navigation'
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
+import axios from 'axios'
+import toast from 'react-hot-toast'
+import Modal from './Modal'
 
 interface Props{
     isOpen?: boolean
@@ -30,8 +33,29 @@ function SettingsModal({isOpen, onClose, currentUser}:Props) {
         })
     }
 
+    const onSubmit: SubmitHandler<FieldValues> = (data) =>{
+        setIsLoading(true)
+        axios.post('/api/settings', data)
+        .then(()=>{
+            router.refresh()
+            onClose()
+        })
+        .catch(()=>toast.error('Terjadi Kesalahan'))
+        .finally(()=>setIsLoading(false))
+    }
+
   return (
-    <div>SettingsModal</div>
+    <Modal isOpen={isOpen} onClose={onClose}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='space-y-12'>
+                <div className='border-b border-gray-900/10 pb-12'>
+                    <h2 className='text-base font-semibold'>
+                        Profil
+                    </h2>
+                </div>
+            </div>
+        </form>
+    </Modal>
   )
 }
 
