@@ -9,6 +9,7 @@ import toast from 'react-hot-toast'
 import Modal from './Modal'
 import Input from './Input/Input'
 import Select from './Select'
+import Button from './Input/Button'
 
 interface Props{
     isOpen?: boolean
@@ -62,6 +63,15 @@ function GroupChatModal({isOpen, onClose, users}:Props) {
                         })} value={members} />
                     </div>
                 </div>
+            </div>
+            <div className='mt-6 flex items-center justify-end gap-x-6'>
+                <Button disabled={isLoading} onClick={onClose} type='button' secondary>
+                    Tidak Jadi
+                </Button>
+
+                <Button disabled={isLoading} type='submit'>
+                    Jadi Membuat Grup
+                </Button>
             </div>
         </form>
     </Modal>
