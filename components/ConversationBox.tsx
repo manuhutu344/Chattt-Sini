@@ -10,6 +10,7 @@ import clsx from 'clsx'
 import { FullConversationType } from '@/app/types'
 import useOtherUser from '@/app/hooks/useOtherUser'
 import Avatar from './Avatar'
+import AvatarGroup from './AvatarGroup'
 
 interface Props{
     data: FullConversationType
@@ -51,7 +52,11 @@ function ConversationBox({data, selected}:Props) {
     },[lastMessages])
   return (
     <div className={clsx(`w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer p-3`, selected ? 'bg-neutral-100' : 'bg-white')} onClick={handleClick}>
+        {data.isGroup ? (
+            <AvatarGroup users={data.users} />
+        ):(
         <Avatar user={otherUser} />
+        )}
         <div className='min-w-0 flex-1'>
             <div className='focus:outline-none'>
                 <div className='flex justify-between items-center mb-1'>
