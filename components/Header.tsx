@@ -6,6 +6,7 @@ import React, { useMemo, useState } from 'react'
 import { HiChevronLeft, HiEllipsisHorizontal } from 'react-icons/hi2'
 import Avatar from './Avatar'
 import ProfileDrawer from './Input/ProfileDrawer'
+import AvatarGroup from './AvatarGroup'
 
 interface Props{
     conversation: Conversation &{
@@ -30,7 +31,11 @@ function Header({conversation}:Props) {
                 <Link className='lg:hidden block text-sky-500 hover:text-sky-600 transition cursor-pointer' href='/conversations'>
                     <HiChevronLeft size={32} />
                 </Link>
+                {conversation.isGroup ? (
+                    <AvatarGroup users={conversation.users}  />
+                ):(
                 <Avatar user={otherUser} />
+                )}
                 <div className='flex flex-col'>
                     <div>
                         {conversation.name || otherUser.name}
