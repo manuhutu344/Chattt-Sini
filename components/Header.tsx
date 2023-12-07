@@ -19,7 +19,7 @@ function Header({conversation}:Props) {
     const [drawerOpen, setDrawerOpen] = useState(false)
     const statusText = useMemo(()=>{
         if(conversation.isGroup){
-            return `${conversation.users.length} Angota: `
+            return `${conversation.users.length} Angota `
         }
         return 'Aktif'
     },[conversation])
