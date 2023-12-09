@@ -35,10 +35,20 @@ function Body({initialMessages}:Props) {
       })
       bottomRef?.current?.scrollIntoView()
     }
+    function updateMessaHandler(newMessage:FullMessageType){
+      setMessages((current)=>current.map((currentMessage)=>{
+        if(currentMessage.id === newMessage.id){
+          return newMessage
+        }
+        return currentMessage
+      }))
+    }
     pusherClient.bind('messages:new', messageHandler)
+    pusherClient.bind('message:update', updateMessaHandler)
     return () =>{
       pusherClient.unsubscribe(conversationId)
       pusherClient.unbind('messages:new', messageHandler)
+      pusherClient.unbind('message:update', updateMessaHandler)
     }
   }, [conversationId])
 
