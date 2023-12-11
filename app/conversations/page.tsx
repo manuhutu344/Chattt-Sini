@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import useConversation from '../hooks/useConversation'
 import EmptyState from '@/components/EmptyState'
 
-function page() {
+const page = () => {
     const {isOpen} = useConversation()
   return (
     <div className={clsx(
