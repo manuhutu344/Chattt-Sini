@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import clsx from 'clsx'
 import useConversation from '../hooks/useConversation'
