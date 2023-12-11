@@ -4,6 +4,7 @@ const nextConfig = {
         ignoreBuildErrors: true,
     },
     experimental:{
+        appDir: true,
         swcPlugins: [
             ["next-superjson-plugin", {}]
         ]
