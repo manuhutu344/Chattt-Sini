@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import useConversation from '../hooks/useConversation'
 import EmptyState from '@/components/EmptyState'
 
-const Home = () => {
+const page = () => {
     const {isOpen} = useConversation()
   return (
     <div className={clsx(
@@ -17,4 +17,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default page
