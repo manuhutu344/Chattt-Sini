@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    typscript:{
-        ignoreBuildErrors: true,
-    },
     experimental:{
-        appDir: true,
         swcPlugins: [
             ["next-superjson-plugin", {}]
         ]
